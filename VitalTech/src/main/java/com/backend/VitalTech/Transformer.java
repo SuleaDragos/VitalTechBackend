@@ -34,7 +34,7 @@ public class Transformer {
         dto.setLocDeMunca(entity.getLocDeMunca());
         dto.setAlergii(entity.getAlergii());
         dto.setConsultatiiCardiologice(entity.getConsultatiCardiologice());
-        dto.setId_Medic(entity.getMedic().getId());
+        dto.setId_Medic(entity.getMedic().getId()); //Trebuie Comentata in cazul in care nu referentiem medici la pacient
         return dto;
     }
     public static Pacient fromDto(PacientDTO dto){
