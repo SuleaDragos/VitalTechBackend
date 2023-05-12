@@ -3,9 +3,10 @@ package com.backend.VitalTech.service_implementation;
 import com.backend.VitalTech.Transformer;
 import com.backend.VitalTech.entity.Pacient;
 import com.backend.VitalTech.model.PacientDTO;
-import com.backend.VitalTech.repository.MedicRepository;
-import com.backend.VitalTech.repository.PacientRepository;
+import com.backend.VitalTech.repository.*;
+import com.backend.VitalTech.service.DateMasurateService;
 import com.backend.VitalTech.service.PacientService;
+import com.backend.VitalTech.service.RecomandariService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,15 @@ import java.util.List;
 public class PacientServiceImpl  implements PacientService {
     private final PacientRepository pacientRepository;
     private final MedicRepository medicRepository;
+    private final AlarmeRepository alarmeRepository;
+    private final DateMasurateRepository dateMasurateRepository;
+    private final RecomandariRepository recomandariRepository;
     public List<PacientDTO> getPacienti()
     {
         return pacientRepository.findAll().stream().map(Transformer::toDto).toList();
+    }
+    public List<PacientDTO> getPacientiByMeidcId(Long id){
+        return pacientRepository.findAllByMedicId(id).stream().map(Transformer::toDto).toList();
     }
     public PacientDTO addPacient(PacientDTO pacientDTO)  // adaugarea asta e mai mare pentru ca trebuie referentiat medicul
     {
@@ -29,6 +36,15 @@ public class PacientServiceImpl  implements PacientService {
             pacient.setPrenume(pacientDTO.getPrenume());
             pacient.setParola(pacientDTO.getParola());
             pacient.setVarsta(pacientDTO.getVarsta());
+            pacient.setCnp(pacientDTO.getCnp());
+            pacient.setAdresa(pacientDTO.getAdresa());
+            pacient.setNumarTelefon(pacientDTO.getNumarTelefon());
+            pacient.setAdresaMail(pacientDTO.getAdresaMail());
+            pacient.setProfesie(pacientDTO.getProfesie());
+            pacient.setLocDeMunca(pacientDTO.getLocDeMunca());
+            pacient.setIstoricMedical(pacientDTO.getIstoricMedical());
+            pacient.setAlergii(pacientDTO.getAlergii());
+            pacient.setConsultatiCardiologice(pacientDTO.getConsultatiiCardiologice());
             pacient.setMedic(medic.get());
             return Transformer.toDto(pacientRepository.save(pacient));
         }

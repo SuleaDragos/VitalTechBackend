@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PacientService {
     public List<PacientDTO> getPacienti();
+    public List<PacientDTO> getPacientiByMeidcId(Long id);
     public PacientDTO addPacient(PacientDTO pacientDTO);
     public PacientDTO getPacientById(Long id);
     public void deletePacient(Long id);

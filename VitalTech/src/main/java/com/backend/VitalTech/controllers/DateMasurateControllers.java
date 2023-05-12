@@ -26,7 +26,10 @@ public class DateMasurateControllers {
     public ResponseEntity<List<DateMasurateDTO>> getDateMasuratele(){
         return ResponseEntity.ok(service.getDateMasuratele());
     }
-
+    @GetMapping(value = "/pacientId={id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<DateMasurateDTO>> getDateMasurateleByPacientId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.getDateMasurateleByPacientId(id));
+    }
     @GetMapping(value = "/id={id}")
     public ResponseEntity<DateMasurateDTO> getDateMasurateById(@PathVariable("id") Long id){
         try{

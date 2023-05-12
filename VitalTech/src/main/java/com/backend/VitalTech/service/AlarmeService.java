@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AlarmeService {
     public List<AlarmeDTO> getAlarmele();
+    public List<AlarmeDTO> getAlarmeleByPacientId(Long id);
     public AlarmeDTO addAlarme(AlarmeDTO alarmeDTO);
     public AlarmeDTO getAlarmeById(Long id);
     public void deleteAlarme(Long id);

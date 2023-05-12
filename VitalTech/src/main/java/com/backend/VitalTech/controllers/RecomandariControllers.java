@@ -26,7 +26,10 @@ public class RecomandariControllers {
     public ResponseEntity<List<RecomandariDTO>> getRecomandarile(){
         return ResponseEntity.ok(service.getRecomandarile());
     }
-
+    @GetMapping(value = "/pacientId={id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<RecomandariDTO>> getRecomandarileByPacientId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.getRecomandarileByPacientId(id));
+    }
     @GetMapping(value = "/id={id}")
     public ResponseEntity<RecomandariDTO> getRecomandariById(@PathVariable("id") Long id){
         try{

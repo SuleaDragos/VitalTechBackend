@@ -2,6 +2,8 @@ package com.backend.VitalTech.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Set;
 
@@ -39,6 +41,7 @@ public class Pacient {
     @Column
     private String consultatiCardiologice;
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_Medic")
     private Medic medic;
     @OneToMany (mappedBy = "pacient")

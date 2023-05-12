@@ -20,6 +20,9 @@ public class DateMasurateServiceImpl implements DateMasurateService {
     {
         return dateMasurateRepository.findAll().stream().map(Transformer::toDto).toList();
     }
+    public List<DateMasurateDTO> getDateMasurateleByPacientId(Long id){
+        return dateMasurateRepository.findAllByPacientId(id).stream().map(Transformer::toDto).toList();
+    }
     public DateMasurateDTO addDateMasurate(DateMasurateDTO dateMasurateDTO)  // adaugarea asta e mai mare pentru ca trebuie referentiat pacientul
     {
         var pacient = pacientRepository.findById(dateMasurateDTO.getId_Pacient());

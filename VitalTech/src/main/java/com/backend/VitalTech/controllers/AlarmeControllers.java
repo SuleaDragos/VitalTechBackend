@@ -26,7 +26,10 @@ public class AlarmeControllers {
     public ResponseEntity<List<AlarmeDTO>> getAlarmele(){
         return ResponseEntity.ok(service.getAlarmele());
     }
-
+    @GetMapping(value = "/pacientId={id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AlarmeDTO>> getAlarmeleByPacientId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.getAlarmeleByPacientId(id));
+    }
     @GetMapping(value = "/id={id}")
     public ResponseEntity<AlarmeDTO> getAlarmeById(@PathVariable("id") Long id){
         try{

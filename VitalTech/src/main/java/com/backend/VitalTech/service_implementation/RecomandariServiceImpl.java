@@ -20,6 +20,9 @@ public class RecomandariServiceImpl implements RecomandariService {
     {
         return recomandariRepository.findAll().stream().map(Transformer::toDto).toList();
     }
+    public List<RecomandariDTO> getRecomandarileByPacientId(Long id){
+        return recomandariRepository.findAllByPacientId(id).stream().map(Transformer::toDto).toList();
+    }
     public RecomandariDTO addRecomandari(RecomandariDTO recomandariDTO)  // adaugarea asta e mai mare pentru ca trebuie referentiat pacientul
     {
         var pacient = pacientRepository.findById(recomandariDTO.getId_Pacient());

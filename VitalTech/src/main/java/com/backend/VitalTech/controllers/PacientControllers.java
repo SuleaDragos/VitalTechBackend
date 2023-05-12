@@ -26,7 +26,10 @@ public class PacientControllers {
     public ResponseEntity<List<PacientDTO>> getPacienti(){
      return ResponseEntity.ok(service.getPacienti());
     }
-
+    @GetMapping(value = "/medicId={id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<PacientDTO>> getPacientiByMedicId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.getPacientiByMeidcId(id));
+    }
     @GetMapping(value = "/id={id}")
     public ResponseEntity<PacientDTO> getPacientById(@PathVariable("id") Long id){
         try{

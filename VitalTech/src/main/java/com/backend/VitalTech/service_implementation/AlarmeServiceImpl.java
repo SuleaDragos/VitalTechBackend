@@ -16,9 +16,11 @@ import java.util.List;
 public class AlarmeServiceImpl implements AlarmeService {
     private final AlarmeRepository alarmeRepository;
     private final PacientRepository pacientRepository;
-    public List<AlarmeDTO> getAlarmele()
-    {
+    public List<AlarmeDTO> getAlarmele() {
         return alarmeRepository.findAll().stream().map(Transformer::toDto).toList();
+    }
+    public List<AlarmeDTO> getAlarmeleByPacientId(Long id){
+        return alarmeRepository.findAllByPacientId(id).stream().map(Transformer::toDto).toList();
     }
     public AlarmeDTO addAlarme(AlarmeDTO alarmeDTO)  // adaugarea asta e mai mare pentru ca trebuie referentiat pacientul
     {
