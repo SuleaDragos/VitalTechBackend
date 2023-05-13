@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/alarme")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class AlarmeControllers {
     private final AlarmeService service;

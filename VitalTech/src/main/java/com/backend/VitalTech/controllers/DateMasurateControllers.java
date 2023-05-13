@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/dateMasurate")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class DateMasurateControllers {
     private final DateMasurateService service;
