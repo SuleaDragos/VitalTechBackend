@@ -43,4 +43,8 @@ public class MedicControllers {
     public void deleteMedic(@PathVariable("id") Long id){
         service.deleteMedic(id);
     }
+    @GetMapping(value = "/mail={mail}")
+    public Long getMedicIdByEmail(@PathVariable("mail") String mail){
+        return service.getMedicIdByEmail(mail);
+    }
 }

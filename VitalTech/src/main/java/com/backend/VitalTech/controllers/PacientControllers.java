@@ -46,4 +46,13 @@ public class PacientControllers {
     public void deletePacient(@PathVariable("id") Long id){
         service.deletePacient(id);
     }
+
+    @PutMapping(value = "/id={id}")
+    public ResponseEntity<PacientDTO> updatePacient(@PathVariable("id") Long id,@RequestBody PacientDTO pacientDTO){
+        return ResponseEntity.ok(service.updatePacient(id,pacientDTO));
+    }
+    @GetMapping(value = "/mail={mail}")
+    public Long getPacientIdByEmail(@PathVariable("mail") String mail){
+        return service.getPacientIdByEmail(mail);
+    }
 }

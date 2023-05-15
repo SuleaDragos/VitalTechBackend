@@ -10,4 +10,5 @@ public interface MedicService {
     public MedicDTO addMedic(MedicDTO medicDTO);
     public MedicDTO getMedicById(Long id);
     public void deleteMedic(Long id);
+    public Long getMedicIdByEmail(String mail);
 }
