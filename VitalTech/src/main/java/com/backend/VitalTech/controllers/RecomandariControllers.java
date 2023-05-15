@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/recomandari")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class RecomandariControllers {
     private final RecomandariService service;

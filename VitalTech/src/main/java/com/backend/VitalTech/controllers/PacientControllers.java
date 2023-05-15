@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/pacient")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class PacientControllers {
     private final PacientService service;
