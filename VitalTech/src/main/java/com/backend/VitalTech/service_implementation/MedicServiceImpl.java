@@ -1,6 +1,7 @@
 package com.backend.VitalTech.service_implementation;
 
 import com.backend.VitalTech.Transformer;
+import com.backend.VitalTech.entity.Pacient;
 import com.backend.VitalTech.model.MedicDTO;
 import com.backend.VitalTech.repository.MedicRepository;
 import com.backend.VitalTech.repository.PacientRepository;
@@ -30,5 +31,9 @@ public class MedicServiceImpl implements MedicService {
     public void deleteMedic(Long id)
     {
         medicRepository.deleteById(id);
+    }
+    public Long getMedicIdByEmail(String mail){
+        var medic = medicRepository.findTopByAdresaMail(mail);
+        return medic.get().getId();
     }
 }

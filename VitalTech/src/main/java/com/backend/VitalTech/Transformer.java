@@ -10,6 +10,7 @@ public class Transformer {
         dto.setNume(entity.getNume());
         dto.setPrenume(entity.getPrenume());
         dto.setParola(entity.getParola());
+        dto.setAdresaMail(entity.getAdresaMail());
         return dto;
     }
     public static Medic fromDto(MedicDTO dto){
@@ -17,6 +18,7 @@ public class Transformer {
         entity.setNume(dto.getNume());
         entity.setPrenume(dto.getPrenume());
         entity.setParola(dto.getParola());
+        entity.setAdresaMail(dto.getAdresaMail());
         return entity;
     }
     public static PacientDTO toDto(Pacient entity){

@@ -14,12 +14,14 @@ public class Medic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
+    private String adresaMail;
+    @Column
+    private String parola;
     @Column
     private String nume;
     @Column
     private String prenume;
-    @Column
-    private String parola;
     @OneToMany (mappedBy = "medic")
     private Set<Pacient> pacienti;
 

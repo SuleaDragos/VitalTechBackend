@@ -58,4 +58,8 @@ public class PacientServiceImpl  implements PacientService {
     {
         pacientRepository.deleteById(id);
     }
+    public Long getPacientIdByEmail(String mail){
+        var pacient = pacientRepository.findTopByAdresaMail(mail);
+        return pacient.get().getId();
+    }
 }

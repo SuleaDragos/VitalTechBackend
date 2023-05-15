@@ -45,4 +45,8 @@ public class PacientControllers {
     public void deletePacient(@PathVariable("id") Long id){
         service.deletePacient(id);
     }
+    @GetMapping(value = "/mail={mail}")
+    public Long getPacientIdByEmail(@PathVariable("mail") String mail){
+        return service.getPacientIdByEmail(mail);
+    }
 }
