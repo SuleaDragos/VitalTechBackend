@@ -34,6 +34,7 @@ public class Transformer {
         dto.setAdresaMail(entity.getAdresaMail());
         dto.setProfesie(entity.getProfesie());
         dto.setLocDeMunca(entity.getLocDeMunca());
+        dto.setIstoricMedical(entity.getIstoricMedical());
         dto.setAlergii(entity.getAlergii());
         dto.setConsultatiiCardiologice(entity.getConsultatiCardiologice());
         dto.setId_Medic(entity.getMedic().getId()); //Trebuie Comentata in cazul in care nu referentiem medici la pacient
