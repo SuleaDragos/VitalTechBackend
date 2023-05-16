@@ -18,7 +18,9 @@ public class Alarme {
     @Column
     private String tip;
     @Column
-    private String problema;
+    private String pulsMinim;
+    @Column
+    private String pulsMaxim;
     @Column
     private OffsetDateTime data;
     @ManyToOne(fetch = FetchType.LAZY)

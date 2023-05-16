@@ -29,7 +29,8 @@ public class AlarmeServiceImpl implements AlarmeService {
             var alarme = new Alarme();
             alarme.setTip(alarmeDTO.getTip());
             alarme.setData(alarmeDTO.getData());
-            alarme.setProblema(alarmeDTO.getProblema());
+            alarme.setPulsMinim(alarmeDTO.getPulsMinim());
+            alarme.setPulsMaxim(alarmeDTO.getPulsMaxim());
             alarme.setPacient(pacient.get());
             return Transformer.toDto(alarmeRepository.save(alarme));
         }
