@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "Pacient")
+@Table(name = "pacient")
 public class Pacient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
