@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "medic")
 public class Medic {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(unique = true)
     private String adresaMail;
