@@ -36,4 +36,7 @@ public class MedicServiceImpl implements MedicService {
         var medic = medicRepository.findTopByAdresaMail(mail);
         return medic.get().getId();
     }
+    public MedicDTO getMedicByEmail(String mail){
+        return Transformer.toDto(medicRepository.findByAdresaMail(mail));
+    }
 }

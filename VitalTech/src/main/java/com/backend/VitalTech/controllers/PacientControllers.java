@@ -55,4 +55,13 @@ public class PacientControllers {
     public Long getPacientIdByEmail(@PathVariable("mail") String mail){
         return service.getPacientIdByEmail(mail);
     }
+    @GetMapping(value = "/mobile/mail={mail}")
+    public ResponseEntity<PacientDTO> getPacientByEmailMobile(@PathVariable("mail") String mail){
+        try{
+            PacientDTO e = service.getPacientByEmail(mail);
+            return ResponseEntity.ok(service.getPacientByEmail(mail));
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

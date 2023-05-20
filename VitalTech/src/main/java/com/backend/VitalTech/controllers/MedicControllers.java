@@ -47,4 +47,14 @@ public class MedicControllers {
     public Long getMedicIdByEmail(@PathVariable("mail") String mail){
         return service.getMedicIdByEmail(mail);
     }
+
+    @GetMapping(value = "/mobile/mail={mail}")
+    public ResponseEntity<MedicDTO> getMedicIdByEmailMobile(@PathVariable("mail") String mail){
+        try{
+            MedicDTO e = service.getMedicByEmail(mail);
+            return ResponseEntity.ok(service.getMedicByEmail(mail));
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
