@@ -43,16 +43,18 @@ public class MedicControllers {
     public void deleteMedic(@PathVariable("id") Long id){
         service.deleteMedic(id);
     }
-    @GetMapping(value = "/mail={mail}")
-    public Long getMedicIdByEmail(@PathVariable("mail") String mail){
-        return service.getMedicIdByEmail(mail);
+    @GetMapping(value = "/mail={mail}/password={password}")
+    public Long getMedicIdByEmail(@PathVariable("mail") String mail,
+                                  @PathVariable("password") String password){
+        return service.getMedicIdByEmail(mail,password);
     }
 
-    @GetMapping(value = "/mobile/mail={mail}")
-    public ResponseEntity<MedicDTO> getMedicIdByEmailMobile(@PathVariable("mail") String mail){
+    @GetMapping(value = "/mobile/mail={mail}/password={password}")
+    public ResponseEntity<MedicDTO> getMedicIdByEmailMobile(@PathVariable("mail") String mail,
+                                                            @PathVariable("password") String password){
         try{
-            MedicDTO e = service.getMedicByEmail(mail);
-            return ResponseEntity.ok(service.getMedicByEmail(mail));
+            MedicDTO e = service.getMedicByEmail(mail,password);
+            return ResponseEntity.ok(service.getMedicByEmail(mail,password));
         } catch (NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

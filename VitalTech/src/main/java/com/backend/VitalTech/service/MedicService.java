@@ -10,6 +10,6 @@ public interface MedicService {
     public MedicDTO addMedic(MedicDTO medicDTO);
     public MedicDTO getMedicById(Long id);
     public void deleteMedic(Long id);
-    public Long getMedicIdByEmail(String mail);
-    public MedicDTO getMedicByEmail(String mail);
+    public Long getMedicIdByEmail(String mail, String password);
+    public MedicDTO getMedicByEmail(String mail, String password);
 }

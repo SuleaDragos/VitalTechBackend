@@ -51,15 +51,17 @@ public class PacientControllers {
     public ResponseEntity<PacientDTO> updatePacient(@PathVariable("id") Long id,@RequestBody PacientDTO pacientDTO){
         return ResponseEntity.ok(service.updatePacient(id,pacientDTO));
     }
-    @GetMapping(value = "/mail={mail}")
-    public Long getPacientIdByEmail(@PathVariable("mail") String mail){
-        return service.getPacientIdByEmail(mail);
+    @GetMapping(value = "/mail={mail}/password={password}")
+    public Long getPacientIdByEmail(@PathVariable("mail") String mail,
+                                    @PathVariable("password") String password){
+        return service.getPacientIdByEmail(mail,password);
     }
-    @GetMapping(value = "/mobile/mail={mail}")
-    public ResponseEntity<PacientDTO> getPacientByEmailMobile(@PathVariable("mail") String mail){
+    @GetMapping(value = "/mobile/mail={mail}/password={password}")
+    public ResponseEntity<PacientDTO> getPacientByEmailMobile(@PathVariable("mail") String mail,
+                                                              @PathVariable("password") String password){
         try{
-            PacientDTO e = service.getPacientByEmail(mail);
-            return ResponseEntity.ok(service.getPacientByEmail(mail));
+            PacientDTO e = service.getPacientByEmail(mail, password);
+            return ResponseEntity.ok(service.getPacientByEmail(mail,password));
         } catch (NoSuchElementException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
