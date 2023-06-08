@@ -8,6 +8,8 @@ import com.backend.VitalTech.service.DateMasurateService;
 import com.backend.VitalTech.service.PacientService;
 import com.backend.VitalTech.service.RecomandariService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,8 @@ public class PacientServiceImpl  implements PacientService {
     private final AlarmeRepository alarmeRepository;
     private final DateMasurateRepository dateMasurateRepository;
     private final RecomandariRepository recomandariRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
     public List<PacientDTO> getPacienti()
     {
         return pacientRepository.findAll().stream().map(Transformer::toDto).toList();
@@ -34,7 +38,7 @@ public class PacientServiceImpl  implements PacientService {
             var pacient = new Pacient();
             pacient.setNume(pacientDTO.getNume());
             pacient.setPrenume(pacientDTO.getPrenume());
-            pacient.setParola(pacientDTO.getParola());
+            pacient.setParola(passwordEncoder.encode(pacientDTO.getParola()));
             pacient.setVarsta(pacientDTO.getVarsta());
             pacient.setCnp(pacientDTO.getCnp());
             pacient.setAdresa(pacientDTO.getAdresa());

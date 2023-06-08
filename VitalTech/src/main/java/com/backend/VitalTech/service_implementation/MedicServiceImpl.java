@@ -16,6 +16,7 @@ import java.util.List;
 public class MedicServiceImpl implements MedicService {
     private final MedicRepository medicRepository;
     private final PacientRepository pacientRepository;
+
     public List<MedicDTO> getMedici()
     {
         return medicRepository.findAll().stream().map(Transformer::toDto).toList();
