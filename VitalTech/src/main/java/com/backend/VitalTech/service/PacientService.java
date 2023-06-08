@@ -11,7 +11,7 @@ public interface PacientService {
     public PacientDTO addPacient(PacientDTO pacientDTO);
     public PacientDTO getPacientById(Long id);
     public void deletePacient(Long id);
-    public Long getPacientIdByEmail(String mail,String password);
-    public PacientDTO getPacientByEmail(String mail);
+    public Long getPacientIdByEmail(String mail, String password);
+    public PacientDTO getPacientByEmail(String mail, String Password);
     public PacientDTO updatePacient(Long id,PacientDTO pacientDTO);
 }

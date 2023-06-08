@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.function.Function;
 
 @Service
@@ -77,17 +78,21 @@ public class PacientServiceImpl  implements PacientService {
         if(verifyAndUpdateHash(password,pacient.get().getParola(),update))
             return pacient.get().getId();
         else
-            return 0L;
+            return -1L;
     }
-    public PacientDTO getPacientByEmail(String mail){
-        return Transformer.toDto(pacientRepository.findByAdresaMail(mail));
+    public PacientDTO getPacientByEmail(String mail, String password){
+        var pacient = pacientRepository.findTopByAdresaMail(mail);
+        if(verifyAndUpdateHash(password,pacient.get().getParola(),update))
+            return Transformer.toDto(pacientRepository.findByAdresaMail(mail));
+        else
+            throw new NoSuchElementException();
     }
     public PacientDTO updatePacient(Long id, PacientDTO pacientDTO) {
         var pacientData = pacientRepository.findById(id);
         Pacient pacient = pacientData.get();
         pacient.setNume(pacientDTO.getNume());
         pacient.setPrenume(pacientDTO.getPrenume());
-        pacient.setParola(pacientDTO.getParola());
+        pacient.setParola(hash(pacientDTO.getParola()));
         pacient.setVarsta(pacientDTO.getVarsta());
         pacient.setCnp(pacientDTO.getCnp());
         pacient.setAdresa(pacientDTO.getAdresa());

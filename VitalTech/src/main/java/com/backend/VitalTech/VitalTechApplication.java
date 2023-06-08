@@ -11,8 +11,4 @@ public class VitalTechApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VitalTechApplication.class, args);
 	}
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 }
