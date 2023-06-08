@@ -23,8 +23,6 @@ public class UpdatableBCrypt {
     public boolean verifyAndUpdateHash(String password, String hash, Function<String, Boolean> updateFunc) {
         if (BCrypt.checkpw(password, hash)) {
             int rounds = getRounds(hash);
-            // It might be smart to only allow increasing the rounds.
-            // If someone makes a mistake the ability to undo it would be nice though.
             if (rounds != logRounds) {
                 String newHash = hash(password);
                 return updateFunc.apply(newHash);
@@ -33,12 +31,6 @@ public class UpdatableBCrypt {
         }
         return false;
     }
-
-    /*
-     * Copy pasted from BCrypt internals :(. Ideally a method
-     * to exports parts would be public. We only care about rounds
-     * currently.
-     */
     private int getRounds(String salt) {
         char minor = (char)0;
         int off = 0;
@@ -53,8 +45,6 @@ public class UpdatableBCrypt {
                 throw new IllegalArgumentException ("Invalid salt revision");
             off = 4;
         }
-
-        // Extract number of rounds
         if (salt.charAt(off + 2) > '$')
             throw new IllegalArgumentException ("Missing salt rounds");
         return Integer.parseInt(salt.substring(off, off + 2));
