@@ -11,7 +11,8 @@ public class AlarmeDTO {
     private Long id;
     private Long id_Pacient;
     private String tip;
-    private String problema;
+    private String pulsMinim;
+    private String pulsMaxim;
     private OffsetDateTime data;
 
 }

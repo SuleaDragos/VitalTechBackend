@@ -34,6 +34,7 @@ public class Transformer {
         dto.setAdresaMail(entity.getAdresaMail());
         dto.setProfesie(entity.getProfesie());
         dto.setLocDeMunca(entity.getLocDeMunca());
+        dto.setIstoricMedical(entity.getIstoricMedical());
         dto.setAlergii(entity.getAlergii());
         dto.setConsultatiiCardiologice(entity.getConsultatiCardiologice());
         dto.setId_Medic(entity.getMedic().getId()); //Trebuie Comentata in cazul in care nu referentiem medici la pacient
@@ -60,7 +61,8 @@ public class Transformer {
         var dto = new AlarmeDTO();
         dto.setId(entity.getId());
         dto.setTip(entity.getTip());
-        dto.setProblema(entity.getProblema());
+        dto.setPulsMinim(entity.getPulsMinim());
+        dto.setPulsMaxim(entity.getPulsMaxim());
         dto.setData(entity.getData());
         dto.setId_Pacient(entity.getPacient().getId());
         return dto;
@@ -68,7 +70,8 @@ public class Transformer {
     public static Alarme fromDto(AlarmeDTO dto){
         var entity = new Alarme();
         entity.setTip(dto.getTip());
-        entity.setProblema(dto.getProblema());
+        entity.setPulsMinim(dto.getPulsMinim());
+        entity.setPulsMaxim(dto.getPulsMaxim());
         entity.setData(dto.getData());
         return entity;
     }

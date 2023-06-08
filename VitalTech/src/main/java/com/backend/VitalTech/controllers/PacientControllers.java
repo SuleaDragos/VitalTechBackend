@@ -56,4 +56,13 @@ public class PacientControllers {
                                     @PathVariable("password") String password){
         return service.getPacientIdByEmail(mail,password);
     }
+    @GetMapping(value = "/mobile/mail={mail}")
+    public ResponseEntity<PacientDTO> getPacientByEmailMobile(@PathVariable("mail") String mail){
+        try{
+            PacientDTO e = service.getPacientByEmail(mail);
+            return ResponseEntity.ok(service.getPacientByEmail(mail));
+        } catch (NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
