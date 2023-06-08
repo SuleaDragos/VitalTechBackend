@@ -51,8 +51,9 @@ public class PacientControllers {
     public ResponseEntity<PacientDTO> updatePacient(@PathVariable("id") Long id,@RequestBody PacientDTO pacientDTO){
         return ResponseEntity.ok(service.updatePacient(id,pacientDTO));
     }
-    @GetMapping(value = "/mail={mail}")
-    public Long getPacientIdByEmail(@PathVariable("mail") String mail){
-        return service.getPacientIdByEmail(mail);
+    @GetMapping(value = "/mail={mail}/password={password}")
+    public Long getPacientIdByEmail(@PathVariable("mail") String mail,
+                                    @PathVariable("password") String password){
+        return service.getPacientIdByEmail(mail,password);
     }
 }
