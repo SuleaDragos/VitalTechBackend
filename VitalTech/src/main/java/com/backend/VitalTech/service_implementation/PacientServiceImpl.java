@@ -62,6 +62,9 @@ public class PacientServiceImpl  implements PacientService {
         var pacient = pacientRepository.findTopByAdresaMail(mail);
         return pacient.get().getId();
     }
+    public PacientDTO getPacientByEmail(String mail){
+        return Transformer.toDto(pacientRepository.findByAdresaMail(mail));
+    }
     public PacientDTO updatePacient(Long id, PacientDTO pacientDTO) {
         var pacientData = pacientRepository.findById(id);
         Pacient pacient = pacientData.get();

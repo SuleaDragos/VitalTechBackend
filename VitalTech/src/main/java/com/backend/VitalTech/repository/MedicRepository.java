@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface MedicRepository extends JpaRepository<Medic,Long> {
     Optional<Medic> findTopByAdresaMail(String mailMedic);
+    Medic findByAdresaMail(String mailMedic);
 }
