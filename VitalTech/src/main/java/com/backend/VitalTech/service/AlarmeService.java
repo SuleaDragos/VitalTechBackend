@@ -10,4 +10,5 @@ public interface AlarmeService {
     public AlarmeDTO addAlarme(AlarmeDTO alarmeDTO);
     public AlarmeDTO getAlarmeById(Long id);
     public void deleteAlarme(Long id);
+    public AlarmeDTO updateAlarme(Long id, AlarmeDTO alarmeDTO);
 }

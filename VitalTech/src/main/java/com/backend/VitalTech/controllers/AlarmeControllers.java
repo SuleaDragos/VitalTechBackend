@@ -1,6 +1,7 @@
 package com.backend.VitalTech.controllers;
 
 import com.backend.VitalTech.model.AlarmeDTO;
+import com.backend.VitalTech.model.PacientDTO;
 import com.backend.VitalTech.service.AlarmeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,9 @@ public class AlarmeControllers {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAlarme(@PathVariable("id") Long id){
         service.deleteAlarme(id);
+    }
+    @PutMapping(value = "/id={id}")
+    public ResponseEntity<AlarmeDTO> updateAlarme(@PathVariable("id") Long id, @RequestBody AlarmeDTO alarmeDTO){
+        return ResponseEntity.ok(service.updateAlarme(id,alarmeDTO));
     }
 }
