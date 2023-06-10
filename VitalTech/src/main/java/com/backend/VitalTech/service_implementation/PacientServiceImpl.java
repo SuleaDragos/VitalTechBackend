@@ -75,36 +75,35 @@ public class PacientServiceImpl  implements PacientService {
     }
     public Long getPacientIdByEmail(String mail, String password){
         var pacient = pacientRepository.findTopByAdresaMail(mail);
-        if(verifyAndUpdateHash(password,pacient.get().getParola(),update))
-            return pacient.get().getId();
+        if(verifyAndUpdateHash(password,pacient.getParola(),update))
+            return pacient.getId();
         else
             return -1L;
     }
     public PacientDTO getPacientByEmail(String mail, String password){
         var pacient = pacientRepository.findTopByAdresaMail(mail);
-        if(verifyAndUpdateHash(password,pacient.get().getParola(),update))
+        if(verifyAndUpdateHash(password,pacient.getParola(),update))
             return Transformer.toDto(pacientRepository.findByAdresaMail(mail));
         else
             throw new NoSuchElementException();
     }
     public PacientDTO updatePacient(Long id, PacientDTO pacientDTO) {
-        var pacientData = pacientRepository.findById(id);
-        Pacient pacient = pacientData.get();
-        pacient.setNume(pacientDTO.getNume());
-        pacient.setPrenume(pacientDTO.getPrenume());
-        pacient.setParola(hash(pacientDTO.getParola()));
-        pacient.setVarsta(pacientDTO.getVarsta());
-        pacient.setCnp(pacientDTO.getCnp());
-        pacient.setAdresa(pacientDTO.getAdresa());
-        pacient.setNumarTelefon(pacientDTO.getNumarTelefon());
-        pacient.setAdresaMail(pacientDTO.getAdresaMail());
-        pacient.setProfesie(pacientDTO.getProfesie());
-        pacient.setLocDeMunca(pacientDTO.getLocDeMunca());
-        pacient.setIstoricMedical(pacientDTO.getIstoricMedical());
-        pacient.setAlergii(pacientDTO.getAlergii());
-        pacient.setConsultatiCardiologice(pacientDTO.getConsultatiiCardiologice());
+        var pacientData = pacientRepository.getReferenceById(id);
+        pacientData.setNume(pacientDTO.getNume());
+        pacientData.setPrenume(pacientDTO.getPrenume());
+        //pacientData.setParola(hash(pacientDTO.getParola()));
+        pacientData.setVarsta(pacientDTO.getVarsta());
+        pacientData.setCnp(pacientDTO.getCnp());
+        pacientData.setAdresa(pacientDTO.getAdresa());
+        pacientData.setNumarTelefon(pacientDTO.getNumarTelefon());
+        pacientData.setAdresaMail(pacientDTO.getAdresaMail());
+        pacientData.setProfesie(pacientDTO.getProfesie());
+        pacientData.setLocDeMunca(pacientDTO.getLocDeMunca());
+        pacientData.setIstoricMedical(pacientDTO.getIstoricMedical());
+        pacientData.setAlergii(pacientDTO.getAlergii());
+        pacientData.setConsultatiCardiologice(pacientDTO.getConsultatiiCardiologice());
 
-        return Transformer.toDto(pacientRepository.save(pacient));
+        return Transformer.toDto(pacientRepository.save(pacientData));
     }
 
 }

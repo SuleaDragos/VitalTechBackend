@@ -13,6 +13,6 @@ import java.util.Optional;
 @Repository
 public interface PacientRepository extends JpaRepository<Pacient,Long> {
     List<Pacient> findAllByMedicId(Long medicId);
-    Optional<Pacient> findTopByAdresaMail(String mailMedic);
+    Pacient findTopByAdresaMail(String mailMedic);
     Pacient findByAdresaMail(String mailMedic);
 }
