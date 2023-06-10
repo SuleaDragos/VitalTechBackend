@@ -10,10 +10,10 @@ import java.time.OffsetDateTime;
 
 @Entity
 @Data
-@Table(name = "Alarme")
+@Table(name = "alarma")
 public class Alarme {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column
     private String tip;

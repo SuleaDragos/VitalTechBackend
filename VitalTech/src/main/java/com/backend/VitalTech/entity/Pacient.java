@@ -9,10 +9,10 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "Pacient")
+@Table(name = "pacient")
 public class Pacient {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(unique = true)
     private String adresaMail;

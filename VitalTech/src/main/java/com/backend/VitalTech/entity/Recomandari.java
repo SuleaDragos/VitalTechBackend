@@ -7,10 +7,10 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
-@Table(name = "Recomandari")
+@Table(name = "recomandari")
 public class Recomandari {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column
     private String recomandare;
